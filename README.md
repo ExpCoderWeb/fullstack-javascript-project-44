@@ -4,3 +4,6 @@
 
 ### Brain-even game demonstration:
 [![asciicast](https://asciinema.org/a/qVuXo7G8qm4w4Ns7luyucoxuP.svg)](https://asciinema.org/a/qVuXo7G8qm4w4Ns7luyucoxuP)
+
+### Brain-calc game demonstration:
+[![asciicast](https://asciinema.org/a/fT9GxtYnE3hbb9QCPKHfjZF3A.svg)](https://asciinema.org/a/fT9GxtYnE3hbb9QCPKHfjZF3A)
