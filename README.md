@@ -7,3 +7,6 @@
 
 ### Brain-calc game demonstration:
 [![asciicast](https://asciinema.org/a/fT9GxtYnE3hbb9QCPKHfjZF3A.svg)](https://asciinema.org/a/fT9GxtYnE3hbb9QCPKHfjZF3A)
+
+### Brain-greatest-common-division game demonstration:
+[![asciicast](https://asciinema.org/a/y6aWw8kBte6mWKlfr0YIQun6t.svg)](https://asciinema.org/a/y6aWw8kBte6mWKlfr0YIQun6t)
