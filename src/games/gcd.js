@@ -2,7 +2,7 @@ import makeGameCore from '../index.js';
 
 const getRandomFromInterval = (min, max) => Math.round(min + Math.random() * (max - min));
 
-const findGreatestCommonDivisor = (number1, number2) => {
+const findGreatestCommonDivider = (number1, number2) => {
   if (number1 === 0 && number2 === 0) {
     return String(1);
   }
@@ -24,29 +24,29 @@ const findGreatestCommonDivisor = (number1, number2) => {
   }
 
   const stepsCount = number1 > number2 ? number2 / 2 : number1 / 2;
-  let greatestCommonDivisor = 1;
+  let greatestCommonDivider = 1;
 
-  for (let divisor = 2; divisor <= stepsCount; divisor += 1) {
-    if ((number1 % divisor === 0) && (number2 % divisor === 0)) {
-      greatestCommonDivisor = divisor;
+  for (let divider = 2; divider <= stepsCount; divider += 1) {
+    if ((number1 % divider === 0) && (number2 % divider === 0)) {
+      greatestCommonDivider = divider;
     }
   }
 
-  return String(greatestCommonDivisor);
+  return String(greatestCommonDivider);
 };
 
-const makeGCD = () => {
+const makeGCDGame = () => {
   const gameQuestion = 'Find the greatest common divisor of given numbers.';
 
   const randomNumber1 = getRandomFromInterval(0, 80);
   const randomNumber2 = getRandomFromInterval(0, 40);
   const randomPairNumber = `${randomNumber1} ${randomNumber2}`;
 
-  const greatestCommonDivisor = findGreatestCommonDivisor(randomNumber1, randomNumber2);
+  const greatestCommonDivisor = findGreatestCommonDivider(randomNumber1, randomNumber2);
 
   return [gameQuestion, randomPairNumber, greatestCommonDivisor];
 };
 
-const runGame = () => makeGameCore(makeGCD);
+const runGame = () => makeGameCore(makeGCDGame);
 
 export default runGame;

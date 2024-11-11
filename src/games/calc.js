@@ -9,7 +9,7 @@ const getRandomOperator = () => {
   return operator;
 };
 
-const makeCalc = () => {
+const makeCalcGame = () => {
   const gameQuestion = 'What is the result of the expression?';
 
   const randomOperator = getRandomOperator();
@@ -45,6 +45,6 @@ const makeCalc = () => {
   return [gameQuestion, randomExpression, expressionResult];
 };
 
-const runGame = () => makeGameCore(makeCalc);
+const runGame = () => makeGameCore(makeCalcGame);
 
 export default runGame;

@@ -4,7 +4,7 @@ const getRandomNumber = () => Math.round(Math.random() * 100);
 
 const isEven = (number) => number % 2 === 0;
 
-const makeEven = () => {
+const makeEvenGame = () => {
   const gameQuestion = 'Answer "yes" if the number is even, otherwise answer "no".';
 
   const randomNumber = getRandomNumber();
@@ -13,6 +13,6 @@ const makeEven = () => {
   return [gameQuestion, randomNumber, isRandomNumberEven];
 };
 
-const runGame = () => makeGameCore(makeEven);
+const runGame = () => makeGameCore(makeEvenGame);
 
 export default runGame;
