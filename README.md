@@ -10,3 +10,6 @@
 
 ### Brain-greatest-common-division game demonstration:
 [![asciicast](https://asciinema.org/a/y6aWw8kBte6mWKlfr0YIQun6t.svg)](https://asciinema.org/a/y6aWw8kBte6mWKlfr0YIQun6t)
+
+### Brain-progression game demonstration:
+[![asciicast](https://asciinema.org/a/WJqpQTBkjGv5MEORmthshpZqi.svg)](https://asciinema.org/a/WJqpQTBkjGv5MEORmthshpZqi)
