@@ -1,6 +1,7 @@
 import makeGameCore from '../index.js';
+import getRandomFromInterval from '../utils.js';
 
-const getRandomFromInterval = (min, max) => Math.round(min + Math.random() * (max - min));
+const rules = 'What number is missing in the progression?';
 
 const getRandomWithoutZeroAndUnits = (min, max) => {
   const getRandomNumber = () => Math.round(min + Math.random() * (max - min));
@@ -22,7 +23,7 @@ const getRandomWithoutZeroAndUnits = (min, max) => {
   return null;
 };
 
-const getRandomProgression = (size, firstElement, difference, hiddenPosition) => {
+const getProgression = (size, firstElement, difference, hiddenPosition) => {
   const progression = [];
   let element = firstElement;
 
@@ -31,29 +32,27 @@ const getRandomProgression = (size, firstElement, difference, hiddenPosition) =>
     element += difference;
   }
 
-  const hiddenElement = String(progression[hiddenPosition - 1]);
+  const hiddenElement = progression[hiddenPosition - 1];
 
   return [progression, hiddenElement];
 };
 
 const makeProgressionGame = () => {
-  const gameQuestion = 'What number is missing in the progression?';
-
   const size = getRandomFromInterval(5, 10);
   const firstElement = getRandomFromInterval(0, 15);
   const difference = getRandomWithoutZeroAndUnits(-10, 10);
   const hiddenPosition = getRandomFromInterval(1, size);
 
-  const randomProgression = getRandomProgression(size, firstElement, difference, hiddenPosition);
+  const randomProgression = getProgression(size, firstElement, difference, hiddenPosition);
 
   const [progression, hiddenElement] = randomProgression;
   const progressionWithHidden = [...progression];
   progressionWithHidden[hiddenPosition - 1] = '..';
   const joinedProgressionWithHidden = progressionWithHidden.join(' ');
 
-  return [gameQuestion, joinedProgressionWithHidden, hiddenElement];
+  return [joinedProgressionWithHidden, String(hiddenElement)];
 };
 
-const runGame = () => makeGameCore(makeProgressionGame);
+const runProgressionGame = () => makeGameCore(rules, makeProgressionGame);
 
-export default runGame;
+export default runProgressionGame;

@@ -1,6 +1,7 @@
 import makeGameCore from '../index.js';
+import getRandomFromInterval from '../utils.js';
 
-const getRandomFromInterval = (min, max) => Math.round(min + Math.random() * (max - min));
+const rules = 'What is the result of the expression?';
 
 const getRandomOperator = () => {
   const operators = ['+', '-', '*'];
@@ -9,9 +10,26 @@ const getRandomOperator = () => {
   return operator;
 };
 
-const makeCalcGame = () => {
-  const gameQuestion = 'What is the result of the expression?';
+const calculateExpression = (number1, number2, operator) => {
+  let expressionResult;
+  switch (operator) {
+    case '+':
+      expressionResult = (number1 + number2);
+      break;
+    case '-':
+      expressionResult = (number1 - number2);
+      break;
+    case '*':
+      expressionResult = (number1 * number2);
+      break;
+    default:
+      return null;
+  }
 
+  return expressionResult;
+};
+
+const makeCalcGame = () => {
   const randomOperator = getRandomOperator();
 
   let randomNumber1;
@@ -26,25 +44,11 @@ const makeCalcGame = () => {
   }
 
   const randomExpression = `${randomNumber1} ${randomOperator} ${randomNumber2}`;
+  const calculatedExpression = calculateExpression(randomNumber1, randomNumber2, randomOperator);
 
-  let expressionResult;
-  switch (randomOperator) {
-    case '+':
-      expressionResult = String(randomNumber1 + randomNumber2);
-      break;
-    case '-':
-      expressionResult = String(randomNumber1 - randomNumber2);
-      break;
-    case '*':
-      expressionResult = String(randomNumber1 * randomNumber2);
-      break;
-    default:
-      return null;
-  }
-
-  return [gameQuestion, randomExpression, expressionResult];
+  return [randomExpression, String(calculatedExpression)];
 };
 
-const runGame = () => makeGameCore(makeCalcGame);
+const runCalcGame = () => makeGameCore(rules, makeCalcGame);
 
-export default runGame;
+export default runCalcGame;

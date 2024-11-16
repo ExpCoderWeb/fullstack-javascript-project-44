@@ -1,6 +1,7 @@
 import makeGameCore from '../index.js';
+import getRandomFromInterval from '../utils.js';
 
-const getRandomFromInterval = (min, max) => Math.round(min + Math.random() * (max - min));
+const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
   if (number < 2) {
@@ -17,15 +18,13 @@ const isPrime = (number) => {
 };
 
 const makePrimeGame = () => {
-  const gameQuestion = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
   const randomNumber = getRandomFromInterval(0, 50);
 
   const isRandomNumberPrime = isPrime(randomNumber) ? 'yes' : 'no';
 
-  return [gameQuestion, randomNumber, isRandomNumberPrime];
+  return [randomNumber, isRandomNumberPrime];
 };
 
-const runGame = () => makeGameCore(makePrimeGame);
+const runPrimeGame = () => makeGameCore(rules, makePrimeGame);
 
-export default runGame;
+export default runPrimeGame;
