@@ -1,35 +1,24 @@
 import readlineSync from 'readline-sync';
+import greetUser from './cli.js';
 
-const greetUser = () => {
-  console.log('Welcome to the Brain Games!');
-  const username = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${username}!`);
-  return username;
-};
+const roundsCount = 3;
+const makeGameCore = (rules, generateRound) => {
+  const username = greetUser();
+  console.log(`${rules}`);
 
-const makeGameCore = (gameFunction) => {
-  const greeting = greetUser();
-  const [gameQuestion] = gameFunction();
-  console.log(`${gameQuestion}`);
-
-  let correctCount = 0;
-  while (correctCount < 3) {
-    const [, expression, correctAnswer] = gameFunction();
-    console.log(`Question: ${expression}`);
+  for (let i = 0; i < roundsCount; i += 1) {
+    const [question, correctAnswer] = generateRound();
+    console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (correctAnswer === userAnswer) {
+    if (userAnswer === correctAnswer) {
       console.log('Correct!');
-      correctCount += 1;
     } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${greeting}!`);
-      break;
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${username}!`);
+      return;
     }
   }
-
-  if (correctCount === 3) {
-    console.log(`Congratulations, ${greeting}!`);
-  }
+  console.log(`Congratulations, ${username}!`);
 };
 
 export default makeGameCore;
