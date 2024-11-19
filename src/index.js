@@ -2,6 +2,7 @@ import readlineSync from 'readline-sync';
 import greetUser from './cli.js';
 
 const roundsCount = 3;
+
 const makeGameCore = (rules, generateRound) => {
   const username = greetUser();
   console.log(`${rules}`);
