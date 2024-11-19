@@ -1,5 +1,5 @@
 import makeGameCore from '../index.js';
-import getRandomFromInterval from '../utils.js';
+import getRandomInRange from '../utils.js';
 
 const rules = 'Find the greatest common divisor of given numbers.';
 
@@ -37,8 +37,8 @@ const findGreatestCommonDivider = (number1, number2) => {
 };
 
 const makeGCDGame = () => {
-  const randomNumber1 = getRandomFromInterval(0, 80);
-  const randomNumber2 = getRandomFromInterval(0, 40);
+  const randomNumber1 = getRandomInRange(0, 80);
+  const randomNumber2 = getRandomInRange(0, 40);
   const randomPairNumber = `${randomNumber1} ${randomNumber2}`;
 
   const greatestCommonDivisor = findGreatestCommonDivider(randomNumber1, randomNumber2);

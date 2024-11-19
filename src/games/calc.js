@@ -1,5 +1,5 @@
 import makeGameCore from '../index.js';
-import getRandomFromInterval from '../utils.js';
+import getRandomInRange from '../utils.js';
 
 const rules = 'What is the result of the expression?';
 
@@ -36,11 +36,11 @@ const makeCalcGame = () => {
   let randomNumber2;
 
   if (randomOperator === '*') {
-    randomNumber1 = getRandomFromInterval(0, 10);
-    randomNumber2 = getRandomFromInterval(1, 20);
+    randomNumber1 = getRandomInRange(0, 10);
+    randomNumber2 = getRandomInRange(1, 20);
   } else {
-    randomNumber1 = getRandomFromInterval(0, 100);
-    randomNumber2 = getRandomFromInterval(0, 80);
+    randomNumber1 = getRandomInRange(0, 100);
+    randomNumber2 = getRandomInRange(0, 80);
   }
 
   const randomExpression = `${randomNumber1} ${randomOperator} ${randomNumber2}`;

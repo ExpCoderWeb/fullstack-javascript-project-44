@@ -1,5 +1,5 @@
 import makeGameCore from '../index.js';
-import getRandomFromInterval from '../utils.js';
+import getRandomInRange from '../utils.js';
 
 const rules = 'What number is missing in the progression?';
 
@@ -38,10 +38,10 @@ const getProgression = (size, firstElement, difference, hiddenPosition) => {
 };
 
 const makeProgressionGame = () => {
-  const size = getRandomFromInterval(5, 10);
-  const firstElement = getRandomFromInterval(0, 15);
+  const size = getRandomInRange(5, 10);
+  const firstElement = getRandomInRange(0, 15);
   const difference = getRandomWithoutZeroAndUnits(-10, 10);
-  const hiddenPosition = getRandomFromInterval(1, size);
+  const hiddenPosition = getRandomInRange(1, size);
 
   const randomProgression = getProgression(size, firstElement, difference, hiddenPosition);
 
