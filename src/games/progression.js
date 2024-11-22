@@ -3,54 +3,44 @@ import getRandomInRange from '../utils.js';
 
 const rules = 'What number is missing in the progression?';
 
-const getRandomWithoutZeroAndUnits = (min, max) => {
-  const getRandomNumber = () => Math.round(min + Math.random() * (max - min));
-  const randomNumber = getRandomNumber();
-  if (randomNumber !== -1 && randomNumber !== 0 && randomNumber !== 1) {
-    return randomNumber;
-  }
+const getRandomWithoutZeroAndUnits = (min = -10, max = 10) => {
+  const getRandomNumber = () => Math.floor(min + Math.random() * (max - min + 1));
 
-  while (randomNumber === -1 || randomNumber === 0 || randomNumber === 1) {
-    const newRandomNumber = getRandomNumber();
-    if (newRandomNumber !== -1 && newRandomNumber !== 0 && newRandomNumber !== 1) {
-      return newRandomNumber;
-    }
-  }
-  // Выдаёт такую ошибку линтера при отсутствии return в конце функции:
-  // "Expected to return a value at the end of arrow function eslintconsistent-return",
-  // Поэтому решил воткнуть в конце return null
+  const isValid = (num) => num !== -1 && num !== 0 && num !== 1;
 
-  return null;
+  let randomNumber;
+
+  do {
+    randomNumber = getRandomNumber();
+  } while (!isValid(randomNumber));
+
+  return randomNumber;
 };
 
-const getProgression = (size, firstElement, difference, hiddenPosition) => {
+const generateProgression = (start, step, length) => {
   const progression = [];
-  let element = firstElement;
 
-  for (let i = 0; i < size; i += 1) {
-    progression[i] = element;
-    element += difference;
+  for (let i = 0; i < length; i += 1) {
+    progression.push(start + step * i);
   }
 
-  const hiddenElement = progression[hiddenPosition - 1];
-
-  return [progression, hiddenElement];
+  return progression;
 };
 
 const makeProgressionGame = () => {
-  const size = getRandomInRange(5, 10);
-  const firstElement = getRandomInRange(0, 15);
-  const difference = getRandomWithoutZeroAndUnits(-10, 10);
-  const hiddenPosition = getRandomInRange(1, size);
+  const start = getRandomInRange(0, 15);
+  const step = getRandomWithoutZeroAndUnits(-10, 10);
+  const length = getRandomInRange(5, 10);
 
-  const randomProgression = getProgression(size, firstElement, difference, hiddenPosition);
+  const progression = generateProgression(start, step, length);
 
-  const [progression, hiddenElement] = randomProgression;
-  const progressionWithHidden = [...progression];
-  progressionWithHidden[hiddenPosition - 1] = '..';
-  const joinedProgressionWithHidden = progressionWithHidden.join(' ');
+  const randomIndex = getRandomInRange(0, progression.length - 1);
 
-  return [joinedProgressionWithHidden, String(hiddenElement)];
+  const answer = String(progression[randomIndex]);
+  progression[randomIndex] = '..';
+  const question = progression.join(' ');
+
+  return [question, answer];
 };
 
 const runProgressionGame = () => makeGameCore(rules, makeProgressionGame);

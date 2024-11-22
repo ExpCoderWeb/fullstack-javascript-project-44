@@ -8,6 +8,10 @@ const findGreatestCommonDivider = (number1, number2) => {
     return 1;
   }
 
+  if (number1 === number2) {
+    return number1;
+  }
+
   if (number1 === 0) {
     return number2;
   }
@@ -16,34 +20,37 @@ const findGreatestCommonDivider = (number1, number2) => {
     return number1;
   }
 
-  if (number1 % number2 === 0) {
-    return number2;
+  let a = number1;
+  let b = number2;
+
+  if (number1 < number2) {
+    a = number2;
+    b = number1;
   }
 
-  if (number2 % number1 === 0) {
-    return number1;
-  }
+  let remainder;
+  let GCD;
 
-  const stepsCount = number1 > number2 ? number2 / 2 : number1 / 2;
-  let greatestCommonDivider = 1;
-
-  for (let divider = 2; divider <= stepsCount; divider += 1) {
-    if ((number1 % divider === 0) && (number2 % divider === 0)) {
-      greatestCommonDivider = divider;
+  do {
+    remainder = a % b;
+    if (remainder === 0) {
+      GCD = b;
     }
-  }
+    a = b;
+    b = remainder;
+  } while (remainder !== 0);
 
-  return greatestCommonDivider;
+  return GCD;
 };
 
 const makeGCDGame = () => {
   const randomNumber1 = getRandomInRange(0, 80);
   const randomNumber2 = getRandomInRange(0, 40);
-  const randomPairNumber = `${randomNumber1} ${randomNumber2}`;
 
-  const greatestCommonDivisor = findGreatestCommonDivider(randomNumber1, randomNumber2);
+  const question = `${randomNumber1} ${randomNumber2}`;
+  const answer = String(findGreatestCommonDivider(randomNumber1, randomNumber2));
 
-  return [randomPairNumber, String(greatestCommonDivisor)];
+  return [question, answer];
 };
 
 const runGCDGame = () => makeGameCore(rules, makeGCDGame);

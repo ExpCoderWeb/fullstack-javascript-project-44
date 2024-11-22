@@ -10,43 +10,34 @@ const getRandomOperator = () => {
   return operator;
 };
 
-const calculateExpression = (number1, number2, operator) => {
-  let expressionResult;
-  switch (operator) {
-    case '+':
-      expressionResult = (number1 + number2);
-      break;
-    case '-':
-      expressionResult = (number1 - number2);
-      break;
-    case '*':
-      expressionResult = (number1 * number2);
-      break;
-    default:
-      return null;
-  }
-
-  return expressionResult;
-};
-
 const makeCalcGame = () => {
+  const calculateExpression = (number1, number2, operator) => {
+    switch (operator) {
+      case '+':
+        return number1 + number2;
+      case '-':
+        return number1 - number2;
+      case '*':
+        return number1 * number2;
+      default:
+        throw new Error(`Invalid operator - ${operator}`);
+    }
+  };
+
   const randomOperator = getRandomOperator();
 
-  let randomNumber1;
-  let randomNumber2;
+  let randomNumber1 = getRandomInRange(0, 100);
+  let randomNumber2 = getRandomInRange(0, 80);
 
   if (randomOperator === '*') {
     randomNumber1 = getRandomInRange(0, 10);
     randomNumber2 = getRandomInRange(1, 20);
-  } else {
-    randomNumber1 = getRandomInRange(0, 100);
-    randomNumber2 = getRandomInRange(0, 80);
   }
 
-  const randomExpression = `${randomNumber1} ${randomOperator} ${randomNumber2}`;
-  const calculatedExpression = calculateExpression(randomNumber1, randomNumber2, randomOperator);
+  const question = `${randomNumber1} ${randomOperator} ${randomNumber2}`;
+  const answer = String(calculateExpression(randomNumber1, randomNumber2, randomOperator));
 
-  return [randomExpression, String(calculatedExpression)];
+  return [question, answer];
 };
 
 const runCalcGame = () => makeGameCore(rules, makeCalcGame);

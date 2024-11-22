@@ -18,11 +18,10 @@ const isPrime = (number) => {
 };
 
 const makePrimeGame = () => {
-  const randomNumber = getRandomInRange(0, 50);
+  const question = getRandomInRange(0, 50);
+  const answer = isPrime(question) ? 'yes' : 'no';
 
-  const isRandomNumberPrime = isPrime(randomNumber) ? 'yes' : 'no';
-
-  return [randomNumber, isRandomNumberPrime];
+  return [question, answer];
 };
 
 const runPrimeGame = () => makeGameCore(rules, makePrimeGame);
