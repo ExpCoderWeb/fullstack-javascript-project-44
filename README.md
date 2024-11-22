@@ -1,6 +1,15 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ExpCoderWeb/fullstack-javascript-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ExpCoderWeb/fullstack-javascript-project-44/actions) [![Maintainability](https://api.codeclimate.com/v1/badges/1435ab71ff829b6e2f62/maintainability)](https://codeclimate.com/github/ExpCoderWeb/fullstack-javascript-project-44/maintainability)
 
+### Description
+**"Brain Games"** is a set of five console games inspired by popular mobile brain-pumping apps. Each game asks questions to be answered correctly. Once three correct answers are given, the game ends. Incorrect answers end the game and prompt you to play it again. The games are:
+
+- **Calculator**. Calculate random arithmetic expressions consisting of two numbers.
+- **Progression**. Determine a missing member of an arithmetic progression.
+- **Determining an even number**. Determine if a generated number is even.
+- **Determining a prime number**. Determine if the number is prime.
+- **Determining the greatest common divisor**. Find the greatest common divisor of two numbers.
+
 ### Minimal system requirements:
 - Unix terminal
 - Node.js: version from 12.0.0
@@ -10,21 +19,25 @@
 ```bash
 git clone git@github.com:ExpCoderWeb/fullstack-javascript-project-44.git
 ```
-2. Install the necessary dependencies with the command:
+2. Being in the root directory of the package install the necessary dependencies  with the command:
 ```bash
-make install
+npm ci
+```
+3. Create a symbolic link to the package in order to make the game commands available to run from any directory of the system using the command: 
+```bash
+npm link
 ```
 
-### Description
-**"Brain Games"** is a set of five console games inspired by popular mobile brain-pumping apps. Each game asks questions to be answered correctly. Once three correct answers are given, the game ends. Incorrect answers end the game and prompt you to play it again. The games are:
+### Games launch
+Enter a command into the terminal to launch the corresponding game.
 
-- **Calculator.** Calculate random arithmetic expressions. Launched with `brain-calc`.
-- **Progression.** Find missing numbers in a number sequence. Launched with `brain-progression`.
-- **Determining an even number**. Launched with `brain-even`.
-- **Determining the greatest common divisor**. Launched with `brain-gcd`.
-- **Determining a prime number**. Launched with `brain-prime`.
+- **Calculator** - `brain-calc`
+- **Progression** - `brain-progression`
+- **Determining an even number** - `brain-even`
+- **Determining a prime number** - `brain-prime`
+- **Determining the greatest common divisor** - `brain-gcd`
 
-Also, with `brain-games` command greeting with a name which a user inserts can be performed. 
+Also, with `brain-games` command greeting with a name which a user inserts can be performed. Each game contains such a greeting.
 
 ### Games demonstration
 
