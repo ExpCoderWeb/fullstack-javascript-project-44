@@ -19,11 +19,15 @@
 ```bash
 git clone git@github.com:ExpCoderWeb/fullstack-javascript-project-44.git
 ```
-2. Being in the root directory of the package install the necessary dependencies  with the command:
+2. Enter the root directory of the package with the command:
+```bash
+cd fullstack-javascript-project-44
+```
+3. Install the necessary dependencies  with the command:
 ```bash
 npm ci
 ```
-3. Create a symbolic link to the package in order to make the game commands available to run from any directory of the system using the command: 
+4. Create a symbolic link to the package in order to make the game commands available to run from any directory of the system using the command: 
 ```bash
 npm link
 ```
