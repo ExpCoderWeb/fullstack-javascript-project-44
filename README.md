@@ -12,7 +12,7 @@
 
 ### Minimal system requirements:
 - Unix terminal
-- Node.js: version from 12.0.0
+- Node.js: version from 18.x
 
 ### Setup
 1. Clone the repo with the following command:
